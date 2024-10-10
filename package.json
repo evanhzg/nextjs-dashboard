@@ -10,7 +10,10 @@
     "test": "start-server-and-test dev http://localhost:3000 'playwright test --trace on'"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@heroicons/react": "^2.1.4",
+    "@mui/material": "^6.1.2",
     "@playwright/test": "^1.47.2",
     "@tailwindcss/forms": "^0.5.7",
     "@vercel/postgres": "^0.10.0",
