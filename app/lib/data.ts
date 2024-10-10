@@ -238,7 +238,9 @@ export async function fetchCustomerById(id: string) {
         SUM(CASE WHEN invoices.status = 'pending' THEN invoices.amount ELSE 0 END) AS total_pending,
         SUM(CASE WHEN invoices.status = 'paid' THEN invoices.amount ELSE 0 END) AS total_paid
       FROM customers
-      WHERE customers.id = ${id};
+      LEFT JOIN invoices ON customers.id = invoices.customer_id
+      WHERE customers.id = ${id}
+      GROUP BY customers.id;
     `;
 
     const customer = data.rows.map((customer) => ({
@@ -248,6 +250,6 @@ export async function fetchCustomerById(id: string) {
     return customer[0];
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch customer.');
+    throw new Error('Failed to fetch customer. Err : ' + error.message);
   }
 }
