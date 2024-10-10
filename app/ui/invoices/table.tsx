@@ -77,7 +77,7 @@ export default async function InvoicesTable({
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white">
+            <tbody className="divide-y divide-gray-200 bg-white text-gray-900">
               {invoices?.map((invoice) => (
                 <tr
                   key={invoice.id}
